@@ -14,20 +14,20 @@ describe('MarsRoverEngine ', () => {
 
     it.each([
         [[new InitializationCommand(new Coordinate(5, 5)),
-            new StartingPositionCommand(new Position(2, 2, "N"))],
-            new Position(2, 2, "N")],
+            new StartingPositionCommand(new Position(new Coordinate(2, 2), "N"))],
+            new Position(new Coordinate(2, 2), "N")],
         [[new InitializationCommand(new Coordinate(5, 5)),
-            new StartingPositionCommand(new Position(2, 2, "N")),
+            new StartingPositionCommand(new Position(new Coordinate(2, 2), "N")),
             new TurnLeftCommand()
-        ], new Position(2, 2, "W")],
+        ], new Position(new Coordinate(2, 2), "W")],
         [[new InitializationCommand(new Coordinate(5, 5)),
-            new StartingPositionCommand(new Position(2, 2, "N")),
+            new StartingPositionCommand(new Position(new Coordinate(2, 2), "N")),
             new TurnRightCommand()
-        ], new Position(2, 2, "E")],
+        ], new Position(new Coordinate(2, 2), "E")],
         [[new InitializationCommand(new Coordinate(5, 5)),
-            new StartingPositionCommand(new Position(2, 2, "2")),
+            new StartingPositionCommand(new Position(new Coordinate(2, 2), "2")),
             new MoveForwardCommand()
-        ], new Position(2, 3, "N")]
+        ], new Position(new Coordinate(2, 3), "N")]
     ])('should execute commands %s then end in %s position', (commands, finalPosition) => {
         let roverEngine: MarsRoverEngine = new MarsRoverEngine();
 
