@@ -7,32 +7,17 @@ export class Position {
     private coordinate: Coordinate;
     private direction: Direction;
 
-    private parseDirection(directionText: string): Direction {
-        switch (directionText) {
-            case "N":
-                return Direction.NORTH()
-            case "E":
-                return Direction.EAST()
-            case "S":
-                return Direction.SOUTH()
-            case "W":
-                return Direction.WEST()
-            default:
-                return Direction.NORTH()
-        }
-    }
-
-    constructor(coordinate: Coordinate, directionText: string) {
+    constructor(coordinate: Coordinate, direction: Direction) {
         this.coordinate = coordinate;
-        this.direction = this.parseDirection(directionText);
+        this.direction = direction;
     }
 
     turnLeft(): Position {
-        return new Position(this.coordinate, this.direction.turnLeft().toString())
+        return new Position(this.coordinate, this.direction.turnLeft())
     }
 
     turnRight(): Position {
-        return new Position(this.coordinate, this.direction.turnRight().toString())
+        return new Position(this.coordinate, this.direction.turnRight())
     }
 
     moveForward() {
@@ -47,7 +32,7 @@ export class Position {
         } else if (s === "WEST") {
             coordinate = this.coordinate.moveWest();
         }
-        return new Position(coordinate, this.direction.toString());
+        return new Position(coordinate, this.direction);
     }
 
     toString(): string {

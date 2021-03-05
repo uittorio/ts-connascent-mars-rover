@@ -1,6 +1,6 @@
 import {format} from "util";
 
-enum DirectionEnum {
+export enum DirectionEnum {
     NORTH = 0,
     EAST = 1,
     SOUTH = 2,
@@ -17,7 +17,7 @@ export class Direction {
     ])
 
 
-    constructor(value: number) {
+    constructor(value: DirectionEnum) {
         this.value = value;
     }
 
@@ -31,7 +31,6 @@ export class Direction {
 
     turnLeft(): Direction {
         return this.getNextValue(-1)
-        
     }
 
     turnRight(): Direction {
@@ -42,7 +41,6 @@ export class Direction {
         let nextValue = this.value + n;
         return Direction.valueOf((nextValue % 4 + 4) % 4);
     }
-
 
     toString(): string {
         return format("%s", this.enumValue().charAt(0))
