@@ -30,14 +30,19 @@ export class Direction {
     }
 
     turnLeft(): Direction {
-        let previousValue: number = this.value - 1;
-        return Direction.valueOf((previousValue % 4 + 4) % 4);
+        return this.getNextValue(-1)
+        
     }
 
     turnRight(): Direction {
-        let previousValue = this.value + 1;
-        return Direction.valueOf((previousValue % 4 + 4) % 4);
+        return this.getNextValue(1)
     }
+
+    private getNextValue(n: number) {
+        let nextValue = this.value + n;
+        return Direction.valueOf((nextValue % 4 + 4) % 4);
+    }
+
 
     toString(): string {
         return format("%s", this.enumValue().charAt(0))
